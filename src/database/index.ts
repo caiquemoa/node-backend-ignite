@@ -1,12 +1,12 @@
 import { DataSource } from "typeorm";
 
-export const AppDataSource = new DataSource({
+const AppDataSource = new DataSource({
   type: "postgres",
   host: "database_ignite",
   port: 5432,
   username: "docker",
   password: "ignite",
-  database: "db_rentx",
+  database: "database_ignite",
   synchronize: false,
   entities: ["./src/modules/cars/entities/*.ts"],
   migrations: ["./src/database/migrations/*.ts"],
@@ -19,3 +19,5 @@ AppDataSource.initialize()
   .catch((error) => {
     console.log("Failed to initialize data source: ", error.message);
   });
+
+export { AppDataSource };
