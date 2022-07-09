@@ -1,3 +1,3 @@
 #!/bin/sh
-npm run typeorm migration:run -d ./src/database
-npm run dev
+yarn typeorm migration:run -d ./src/database/
+yarn dev
