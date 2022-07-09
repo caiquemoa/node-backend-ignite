@@ -1,11 +1,17 @@
+import { inject, injectable } from "tsyringe";
+
 import { ISpecificationsRepository } from "../../cars/repositories/ISpecificationsRepository";
 
+@injectable()
 class ListSpecificationsUseCase {
   // principle of inversion dependencies
-  constructor(private specificationsRepository: ISpecificationsRepository) {}
+  constructor(
+    @inject("SpecificationsRepository")
+    private specificationsRepository: ISpecificationsRepository
+  ) {}
 
-  execute() {
-    const specifications = this.specificationsRepository.list();
+  async execute() {
+    const specifications = await this.specificationsRepository.list();
     return specifications;
   }
 }
