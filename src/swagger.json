@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "RentalX RocketSeat Documentation",
+    "title": "RentX RocketSeat Documentation",
     "description": "This is a Rent API",
     "version": "1.0.0",
     "contact": {
@@ -68,6 +68,69 @@
               }
             }
           }
+        }
+      }
+    },
+    "/categories/import": {
+      "post":{
+        "tags": ["Category"],
+        "sumary": "Upload a new categories",
+        "description": "Upload file with new categories",
+        "requestBody":{
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file":{
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": ["Specifications"],
+        "sumary": "Create a specification",
+        "description": "Create a new specification",
+        "requestBody":{
+          "content":{
+            "application/json": {
+              "schema":{
+                "$ref": "#/definitions/Specification"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201":{
+            "description": "Created"
+          },
+          "500": "Specification already exists!"
+        }
+      }
+    }
+  },
+  "definitions":{
+    "Specification":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
         }
       }
     }

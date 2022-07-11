@@ -8,7 +8,10 @@ const AppDataSource = new DataSource({
   password: "ignite",
   database: "database_ignite",
   synchronize: false,
-  entities: ["./src/modules/cars/entities/*.ts"],
+  entities: [
+    "./src/modules/cars/entities/*.ts",
+    "./src/modules/accounts/entities/*.ts",
+  ],
   migrations: ["./src/database/migrations/*.ts"],
 });
 
