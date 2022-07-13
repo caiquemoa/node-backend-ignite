@@ -1,10 +1,11 @@
 import { ICreateUserDTO } from "./dtos/ICreateUserDTO";
-import { Users } from "./entities/Users";
+import { User } from "./entities/User";
 
 interface IUsersRepository {
   create(data: ICreateUserDTO): Promise<void>;
-  findByName(name: string): Promise<Users>;
-  list(): Promise<Users[]>;
+  findByEmail(email: string): Promise<User>;
+  findById(id: string): Promise<User>;
+  list(): Promise<User[]>;
 }
 
 export { IUsersRepository };
